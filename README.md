@@ -1,50 +1,28 @@
-# React + TypeScript + Vite
+# BME Frontend Exercises
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Exercise 1 - Code Review
 
-Currently, two official plugins are available:
+- Run `yarn code-review` and open `http://localhost:3000`
+- Perform a code review. 
+  - Be as critical as possible
+  - Don't be shy, this was written by an external developer and we have since refactored it.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Exercise 2 - React + Redux
 
-## Expanding the ESLint configuration
+- Run `yarn dev` to start the react server on `http://localhost:3000`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Task 1
 
-- Configure the top-level `parserOptions` property like this:
+- We have a mock API that returns a list of call invites.
+- We want to fetch the call invites and display them as a list.
+- Use redux and the existing redux actions and reducers in `store/invites`
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Task 2
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Now we want the page to continuously poll for new invites every 3 seconds.
+- Edit the page to do that.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Task 3
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- We want other pages to also be able to poll for new invites.
+- Refactor the page to use a custom hook that can be used by other pages.
